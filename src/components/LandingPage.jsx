@@ -362,44 +362,159 @@ export default function LandingPage() {
 
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="lp-hero">
-        <span className="lp-eyebrow">browser devtools, reimagined</span>
-        <h1 className="lp-headline">Your browser's database,<br/>finally visible.</h1>
-        <p className="lp-sub">
-          Inspect, edit, and export LocalStorage, SessionStorage, and IndexedDB —<br/>
-          no extensions, no servers, just your browser.
-        </p>
-        <button className="lp-cta" onClick={() => navigate('/app')}>Launch Explorer →</button>
-        <p className="lp-compat">Works in Chrome, Firefox, Safari. No install needed.</p>
-      </section>
-
-      {/* ── STATS BAR ────────────────────────────────────── */}
-      <section className="lp-stats-bar fade-in-section">
-        <div className="lp-stats-container">
-          <div className="lp-stat-item">
-            <span className="lp-stat-number monospace">3</span>
-            <span className="lp-stat-label monospace">Storage APIs</span>
+        <div className="lp-hero-glow" aria-hidden="true" />
+        <div className="lp-hero-container">
+          <span className="lp-eyebrow">browser devtools, reimagined</span>
+          <h1 className="lp-headline">Your browser's database,<br/>finally visible.</h1>
+          <p className="lp-sub">
+            Inspect, edit, and export LocalStorage, SessionStorage, and IndexedDB —<br/>
+            no extensions, no servers, just your browser.
+          </p>
+          <div className="lp-hero-actions">
+            <button className="lp-btn-primary" onClick={() => navigate('/app')}>Launch Explorer →</button>
+            <button className="lp-btn-secondary" onClick={() => navigate('/docs')}>View Docs</button>
           </div>
-          <div className="lp-stat-divider" />
-          <div className="lp-stat-item">
-            <span className="lp-stat-number monospace">6</span>
-            <span className="lp-stat-label monospace">Core features</span>
-          </div>
-          <div className="lp-stat-divider" />
-          <div className="lp-stat-item">
-            <span className="lp-stat-number monospace">&lt; 1s</span>
-            <span className="lp-stat-label monospace">Load time</span>
-          </div>
-          <div className="lp-stat-divider" />
-          <div className="lp-stat-item">
-            <span className="lp-stat-number monospace">100%</span>
-            <span className="lp-stat-label monospace">Client-side</span>
+          <p className="lp-compat">Works in Chrome, Firefox, Safari. No install needed.</p>
+          
+          <div className="lp-hero-visual">
+            <ProductScreenshot />
           </div>
         </div>
       </section>
 
-      {/* ── PRODUCT SCREENSHOT ────────────────────────────── */}
-      <section className="lp-screenshot-section fade-in-section">
-        <ProductScreenshot />
+      {/* ── SOCIAL PROOF ROW ──────────────────────────────── */}
+      <section className="lp-social-proof fade-in-section">
+        <div className="lp-social-container">
+          <p className="lp-social-label monospace">WORKS SEAMLESSLY WITH</p>
+          <div className="lp-social-logos">
+            <div className="lp-social-logo">
+              <i className="ti ti-brand-chrome" />
+              <span>Chrome</span>
+            </div>
+            <div className="lp-social-logo">
+              <i className="ti ti-brand-firefox" />
+              <span>Firefox</span>
+            </div>
+            <div className="lp-social-logo">
+              <i className="ti ti-brand-safari" />
+              <span>Safari</span>
+            </div>
+            <div className="lp-social-logo">
+              <i className="ti ti-database" />
+              <span>IndexedDB</span>
+            </div>
+            <div className="lp-social-logo">
+              <i className="ti ti-server" />
+              <span>LocalStorage</span>
+            </div>
+            <div className="lp-social-logo">
+              <i className="ti ti-clock" />
+              <span>SessionStorage</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── STATS SECTION ────────────────────────────────── */}
+      <section className="lp-stats-section fade-in-section">
+        <div className="lp-stats-grid-container">
+          <div className="lp-stat-card">
+            <span className="lp-stat-card-number monospace">3</span>
+            <span className="lp-stat-card-label monospace">STORAGE APIs</span>
+          </div>
+          <div className="lp-stat-card">
+            <span className="lp-stat-card-number monospace">6</span>
+            <span className="lp-stat-card-label monospace">CORE FEATURES</span>
+          </div>
+          <div className="lp-stat-card">
+            <span className="lp-stat-card-number monospace">&lt; 1s</span>
+            <span className="lp-stat-card-label monospace">LOAD TIME</span>
+          </div>
+          <div className="lp-stat-card">
+            <span className="lp-stat-card-number monospace">100%</span>
+            <span className="lp-stat-card-label monospace">CLIENT-SIDE</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ── ALTERNATING FEATURES ─────────────────────────── */}
+      <section className="lp-features-alt fade-in-section">
+        <div className="lp-features-alt-container">
+          {/* Feature Row 1 */}
+          <div className="lp-feature-row">
+            <div className="lp-feature-text">
+              <span className="lp-feature-badge monospace">StorageExplorer | Core</span>
+              <h2 className="lp-feature-heading monospace">Inspect and edit database tables live</h2>
+              <p className="lp-feature-desc">
+                Double click any field in LocalStorage or IndexedDB to update records instantly. 
+                Manage complex schema stores and save edits back to real browser storage with zero overhead.
+              </p>
+              <button className="lp-btn-ghost" onClick={() => navigate('/docs')}>
+                Explore Docs →
+              </button>
+            </div>
+            <div className="lp-feature-visual-wrap">
+              <div className="lp-feature-card-visual">
+                <div className="visual-card-header">
+                  <span className="visual-dot red" />
+                  <span className="visual-dot yellow" />
+                  <span className="visual-dot green" />
+                  <span className="visual-title monospace">users_store.js</span>
+                </div>
+                <div className="visual-card-content monospace">
+                  <div className="code-line"><span className="code-key">const</span> db = <span className="code-fn">await</span> openDB(<span className="code-str">'AppDB'</span>);</div>
+                  <div className="code-line"><span className="code-key">const</span> tx = db.transaction(<span className="code-str">'users'</span>, <span className="code-str">'readwrite'</span>);</div>
+                  <div className="code-line">tx.objectStore(<span className="code-str">'users'</span>).put({"{"}</div>
+                  <div className="code-line indent"><span className="code-prop">id</span>: <span className="code-num">42</span>,</div>
+                  <div className="code-line indent"><span className="code-prop">name</span>: <span className="code-str">'Jane Doe'</span>,</div>
+                  <div className="code-line indent"><span className="code-prop">role</span>: <span className="code-str">'Administrator'</span></div>
+                  <div className="code-line">{"}"});</div>
+                  <div className="code-highlight-bar">
+                    <span className="code-comment">// Double click row in explorer to trigger put()</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Feature Row 2 */}
+          <div className="lp-feature-row lp-feature-row-reverse">
+            <div className="lp-feature-text">
+              <span className="lp-feature-badge monospace">StorageExplorer | Relations</span>
+              <h2 className="lp-feature-heading monospace">Auto-inferred database schemas</h2>
+              <p className="lp-feature-desc">
+                Our inference engine parses data structures within your IndexedDB object stores 
+                to automatically detect relationships and foreign keys. Visualize connections across tables without manual setup.
+              </p>
+              <button className="lp-btn-ghost" onClick={() => navigate('/docs')}>
+                Explore Docs →
+              </button>
+            </div>
+            <div className="lp-feature-visual-wrap">
+              <div className="lp-feature-card-visual relations-map">
+                <div className="relations-node">
+                  <div className="node-header monospace">users</div>
+                  <div className="node-fields monospace">
+                    <div>🔑 id: number</div>
+                    <div className="field-related">name: string ──┐</div>
+                  </div>
+                </div>
+                <div className="relations-connector">
+                  <span className="connector-line"></span>
+                  <span className="connector-badge monospace">1 : N</span>
+                </div>
+                <div className="relations-node">
+                  <div className="node-header monospace">orders</div>
+                  <div className="node-fields monospace">
+                    <div>🔑 id: number</div>
+                    <div className="field-foreign">🔗 userId: number</div>
+                    <div>total: number</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ── ANIMATED TERMINAL ─────────────────────────────── */}
