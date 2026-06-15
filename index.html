@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0a0a'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='18' fill='%234ade80'>◈</text></svg>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StorageExplorer — Browser Database Tool</title>
+    <meta name="description" content="Inspect, edit, and export LocalStorage, SessionStorage, and IndexedDB from one unified browser interface.">
+    <meta name="author" content="Yuvraj Mishra">
+    <meta property="og:title" content="StorageExplorer">
+    <meta property="og:description" content="Your browser's database, finally visible.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <script>
+      (function() {
+        const theme = localStorage.getItem('dbExplorer_theme');
+        if (theme === 'light') {
+          document.body.classList.add('light');
+        }
+      })();
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

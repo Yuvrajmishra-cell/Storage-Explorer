@@ -1,0 +1,292 @@
+.idb-admin-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2200;
+  padding: 24px;
+}
+
+.idb-admin-modal {
+  background: #111111;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 24px;
+  max-width: 400px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.idb-admin-modal-sm {
+  max-width: 380px;
+}
+
+.idb-delete-db-icon-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.idb-delete-db-icon {
+  font-size: 32px;
+  color: #fbbf24;
+}
+
+.idb-admin-modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #e0e0e0;
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+.idb-admin-modal-body {
+  font-size: 13px;
+  color: #888888;
+  line-height: 1.5;
+  margin: 0 0 16px;
+  text-align: center;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.idb-delete-db-pill {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 20px;
+  font-size: 13px;
+  background: #1a0d0d;
+  border: 1px solid #3a1a1a;
+  color: #f87171;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.idb-delete-db-confirm-label {
+  display: block;
+  font-size: 12px;
+  color: #888888;
+  margin-bottom: 8px;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.idb-delete-db-confirm-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: #0d0d0d;
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #e0e0e0;
+  margin-bottom: 20px;
+  outline: none;
+  font-family: inherit;
+}
+
+.idb-delete-db-confirm-input:focus {
+  border-color: #f87171;
+}
+
+.idb-admin-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.idb-admin-btn {
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+.idb-admin-btn.outline {
+  background: transparent;
+  border: 1px solid #444444;
+  color: #888888;
+}
+
+.idb-admin-btn.outline:hover {
+  border-color: #666666;
+  color: #e0e0e0;
+}
+
+.idb-admin-btn.danger-fill {
+  background: #ef4444;
+  border: 1px solid #ef4444;
+  color: #ffffff;
+  font-weight: 600;
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.idb-admin-btn.danger-fill.ready:not(:disabled) {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.idb-admin-btn.danger-fill.ready:not(:disabled):hover {
+  background: #dc2626;
+  border-color: #dc2626;
+}
+
+.idb-purge-choice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.idb-purge-choice-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+  text-align: left;
+  background: #0d0d0d;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: #e0e0e0;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.idb-purge-choice-btn:hover {
+  border-color: #444444;
+  background: #161616;
+}
+
+.idb-purge-choice-btn.danger {
+  color: #f87171;
+  border-color: #3a1a1a;
+}
+
+.idb-purge-choice-btn.danger:hover {
+  background: #1a0d0d;
+  border-color: #f87171;
+}
+
+.idb-purge-choice-btn.muted {
+  color: #888888;
+  background: transparent;
+  border-color: transparent;
+  padding-top: 8px;
+}
+
+.idb-purge-choice-btn.muted:hover {
+  color: #e0e0e0;
+  background: transparent;
+}
+
+.idb-purge-choice-desc {
+  font-size: 11px;
+  color: #666666;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* Tree context menu */
+.app-container .tree-item.tree-root,
+.app-container .tree-item.tree-child {
+  padding: 0;
+  overflow: visible;
+}
+
+.app-container .tree-item .tree-row-with-menu {
+  width: 100%;
+  padding: 6px 8px;
+  box-sizing: border-box;
+}
+
+.tree-row-with-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.tree-row-main {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.tree-menu-btn {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #666666;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 0;
+  margin-left: 4px;
+}
+
+.tree-item:hover .tree-menu-btn,
+.tree-item.tree-menu-open .tree-menu-btn {
+  display: inline-flex;
+}
+
+.tree-menu-btn:hover {
+  color: #e0e0e0;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tree-context-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 100;
+  min-width: 180px;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  padding: 4px 0;
+  margin-top: 4px;
+}
+
+.tree-context-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #e0e0e0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.tree-context-menu-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tree-context-menu-item.danger {
+  color: #f87171;
+}
+
+.tree-context-menu-item.danger:hover {
+  background: rgba(248, 113, 113, 0.08);
+}
+
+.tree-context-menu-item i {
+  font-size: 14px;
+}

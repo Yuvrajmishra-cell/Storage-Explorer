@@ -1,0 +1,420 @@
+/* ═══════════════════════════════════════════════════════════
+   Global UI polish — animations, micro-interactions, tokens
+   ═══════════════════════════════════════════════════════════ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes connectPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+@keyframes hudPulseSlow {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.4); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(74, 222, 128, 0); }
+}
+
+@keyframes exportBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(2px); }
+}
+
+@keyframes shimmerSweep {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes terminalBorderFlash {
+  0% { border-color: #1a3a1a; }
+  100% { border-color: #2a2a2a; }
+}
+
+.route-fade-in {
+  animation: fadeIn 200ms ease;
+  min-height: 100vh;
+  overflow: visible;
+}
+
+/* Buttons — tactile press */
+button:active:not(:disabled),
+.btn:active:not(:disabled),
+.docs-sidebar-launch-btn:active,
+.lp-cta:active,
+.settings-btn-danger:active,
+.settings-btn-danger-fill:active {
+  transform: translateY(1px);
+}
+
+/* Modals — slide up on open */
+.idb-admin-overlay > .idb-admin-modal,
+.idb-connect-overlay > .idb-connect-modal,
+.idb-add-modal-overlay > .idb-add-modal,
+.modal-overlay > .modal-content,
+.keyboard-shortcuts-overlay > .keyboard-shortcuts-modal,
+.onboarding-overlay > .onboarding-modal {
+  animation: slideUp 200ms ease;
+}
+
+/* Navbar logo hover */
+.site-navbar-logo {
+  display: inline-block;
+  transition: transform 300ms ease;
+}
+
+.site-navbar-brand:hover .site-navbar-logo {
+  transform: rotate(45deg);
+}
+
+/* CONNECT status dot */
+.connect-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  margin-right: 6px;
+  flex-shrink: 0;
+  animation: connectPulse 1.2s ease-in-out infinite;
+}
+
+.connect-btn-inner {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Engine badge status */
+.engine-badge.active {
+  border-left: 2px solid #4ade80;
+}
+
+/* Action strip buttons */
+.app-container .action-strip .btn {
+  letter-spacing: 0.05em;
+}
+
+/* Panel headings */
+.app-container .panel-header .ui-chrome-text {
+  letter-spacing: 0.08em;
+}
+
+/* Store count pill */
+.tree-count-pill {
+  margin-left: auto;
+  background: #1a3a1a;
+  color: #4ade80;
+  border-radius: 10px;
+  padding: 1px 6px;
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+.app-container .tree-item.selected.tree-child {
+  background-color: rgba(74, 222, 128, 0.04) !important;
+}
+
+/* Relations polish */
+.relation-empty-hint {
+  font-size: 11px !important;
+  color: #444444 !important;
+}
+
+.relation-row-inferred {
+  background: rgba(74, 222, 128, 0.06);
+  border-radius: 3px;
+}
+
+.relation-row-inferred:hover {
+  background: rgba(74, 222, 128, 0.1) !important;
+}
+
+/* Breadcrumb */
+.panel-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-sep {
+  color: #4ade80;
+  margin: 0 4px;
+}
+
+.breadcrumb-engine {
+  color: #666666;
+  text-transform: uppercase;
+}
+
+.breadcrumb-db {
+  color: #666666;
+}
+
+.breadcrumb-store {
+  color: #e0e0e0;
+  text-transform: uppercase;
+}
+
+.panel-header-with-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.panel-header-with-actions .panel-header-actions {
+  margin-left: auto;
+}
+
+.entry-count-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.entry-export-btn {
+  background: none;
+  border: none;
+  color: #666666;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 2px;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.15s ease;
+}
+
+.entry-export-btn:hover {
+  color: #4ade80;
+}
+
+/* Table headers */
+.idb-col-header {
+  letter-spacing: 0.06em;
+}
+
+/* Row hover left border */
+.app-container .idb-matrix-row {
+  border-left: 2px solid transparent;
+  transition: border-left-color 100ms ease, background-color 0.1s ease;
+}
+
+.app-container .idb-matrix-row:hover {
+  border-left-color: #4ade80;
+}
+
+.app-container .matrix-row {
+  border-left: 2px solid transparent;
+  transition: border-left-color 100ms ease, background-color 0.1s ease;
+}
+
+.app-container .matrix-row:hover {
+  border-left-color: #4ade80;
+}
+
+/* Delete button hover */
+.app-container .delete-btn {
+  transition: transform 100ms ease, color 100ms ease;
+}
+
+.app-container .delete-btn:hover {
+  transform: scale(1.2);
+  color: #f87171 !important;
+}
+
+/* HUD */
+.app-container .telemetry-hud::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #2a2a2a 20%, #2a2a2a 80%, transparent);
+  pointer-events: none;
+}
+
+.hud-dot.pulse-slow {
+  animation: hudPulseSlow 2s ease-in-out infinite;
+}
+
+.log-preview.log-error {
+  color: #f87171 !important;
+}
+
+.log-preview.log-read {
+  color: #888888 !important;
+}
+
+.log-preview.log-write {
+  color: #4ade80 !important;
+  transition: color 0.8s ease;
+}
+
+.log-preview.log-write-fade {
+  color: #888888 !important;
+}
+
+.export-segment:hover .export-btn {
+  animation: exportBounce 0.4s ease;
+}
+
+/* Landing page */
+.lp-headline {
+  font-size: clamp(36px, 6vw, 64px) !important;
+}
+
+.lp-browser-frame {
+  box-shadow:
+    0 0 0 1px #1a1a1a,
+    0 32px 80px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(74, 222, 128, 0.04) !important;
+}
+
+.animated-terminal.terminal-flash {
+  animation: terminalBorderFlash 300ms ease;
+}
+
+.lp-feature-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.lp-feature-icon {
+  display: block;
+  font-size: 22px;
+  color: #4ade80;
+  margin-bottom: 10px;
+}
+
+.lp-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.lp-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmerSweep 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Docs */
+.docs-section h2 {
+  letter-spacing: -0.02em;
+}
+
+.docs-section h2::before {
+  letter-spacing: normal;
+}
+
+.docs-copy-feedback,
+.docs-code-copy-btn .ti-check {
+  color: #4ade80;
+}
+
+/* About */
+.about-ascii {
+  box-shadow:
+    0 0 20px rgba(74, 222, 128, 0.06),
+    inset 0 0 20px rgba(74, 222, 128, 0.02);
+}
+
+.about-tech-card:hover .about-tech-desc {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.about-tech-card .about-tech-desc {
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+
+.about-tech-card:hover {
+  transform: translateY(-2px);
+}
+
+.about-tech-card {
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.about-timeline-item:hover .about-timeline-content {
+  box-shadow: inset -2px 0 0 #4ade80;
+}
+
+.about-timeline-content {
+  transition: box-shadow 200ms ease;
+}
+
+.about-stat-num.counting {
+  color: #4ade80;
+}
+
+/* Settings */
+.settings-theme-card {
+  transition: all 200ms ease;
+}
+
+.settings-theme-card:hover:not(.active) {
+  transform: none;
+}
+
+.settings-theme-card.active {
+  transform: scale(1.02);
+  box-shadow: 0 0 16px rgba(74, 222, 128, 0.1);
+}
+
+.settings-danger-row {
+  border-left: 2px solid #f87171;
+  transition: border-left-width 200ms ease, background-color 200ms ease;
+}
+
+.settings-danger-row:hover {
+  border-left-width: 3px;
+  background: #1f0f0f;
+}
+
+.settings-range {
+  height: 4px;
+  border-radius: 2px;
+}
+
+.settings-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #4ade80;
+  border: 2px solid #0a0a0a;
+  cursor: pointer;
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.2);
+}
+
+.settings-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #4ade80;
+  border: 2px solid #0a0a0a;
+  cursor: pointer;
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.2);
+}
+
+.settings-range:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.35);
+}

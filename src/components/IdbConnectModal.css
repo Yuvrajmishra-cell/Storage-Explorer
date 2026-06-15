@@ -1,0 +1,233 @@
+.idb-connect-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2100;
+  padding: 24px;
+}
+
+.idb-connect-modal {
+  position: relative;
+  background: #111111;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 28px;
+  max-width: 440px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.idb-connect-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: #888888;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.idb-connect-close:hover {
+  color: #e0e0e0;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.idb-connect-header {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding-right: 24px;
+}
+
+.idb-connect-icon {
+  font-size: 24px;
+  color: #4ade80;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.idb-connect-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: #e0e0e0;
+  letter-spacing: -0.01em;
+}
+
+.idb-connect-subtitle {
+  font-size: 13px;
+  color: #888888;
+  margin: 0;
+  line-height: 1.45;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.idb-connect-field {
+  margin-bottom: 16px;
+}
+
+.idb-connect-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #888888;
+  margin-bottom: 8px;
+}
+
+.idb-connect-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: #0d0d0d;
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #e0e0e0;
+  outline: none;
+  font-family: inherit;
+}
+
+.idb-connect-input:focus {
+  border-color: #4ade80;
+}
+
+.idb-connect-version-input {
+  max-width: 100px;
+}
+
+.idb-connect-helper {
+  font-size: 11px;
+  color: #888888;
+  margin: 8px 0 0;
+  line-height: 1.45;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.idb-connect-advanced-wrap {
+  margin-bottom: 20px;
+}
+
+.idb-connect-advanced-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 12px;
+  color: #888888;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.idb-connect-advanced-toggle:hover {
+  color: #e0e0e0;
+}
+
+.idb-connect-advanced-panel {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.idb-connect-existing {
+  margin-bottom: 24px;
+  padding-top: 4px;
+  border-top: 1px solid #1e1e1e;
+}
+
+.idb-connect-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.idb-connect-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #0d0d0d;
+  border: 1px solid #2a2a2a;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #e0e0e0;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.idb-connect-pill:hover {
+  border-color: #444444;
+  background: #161616;
+}
+
+.idb-connect-pill.selected {
+  border-color: #4ade80;
+  background: rgba(74, 222, 128, 0.08);
+  color: #4ade80;
+}
+
+.idb-connect-pill-version {
+  font-size: 10px;
+  color: #888888;
+}
+
+.idb-connect-pill.selected .idb-connect-pill-version {
+  color: rgba(74, 222, 128, 0.75);
+}
+
+.idb-connect-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.idb-connect-btn {
+  font-size: 13px;
+  padding: 8px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.idb-connect-btn.outline {
+  background: transparent;
+  border: 1px solid #444444;
+  color: #888888;
+}
+
+.idb-connect-btn.outline:hover {
+  border-color: #666666;
+  color: #e0e0e0;
+}
+
+.idb-connect-btn.filled {
+  background: #4ade80;
+  border: 1px solid #4ade80;
+  color: #000000;
+  font-weight: 600;
+}
+
+.idb-connect-btn.filled:hover:not(:disabled) {
+  background: #4ade80;
+  border-color: #4ade80;
+}
+
+.idb-connect-btn.filled:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
