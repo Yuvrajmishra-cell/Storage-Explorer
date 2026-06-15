@@ -22,28 +22,28 @@ body.onboarding-active {
 }
 
 /* Backdrop Dimming States */
-.onboarding-overlay-wrapper.dimmed {
+.onboarding-overlay-wrapper.onboarding-overlay-dimmed {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.onboarding-overlay-wrapper.transparent {
+.onboarding-overlay-wrapper.onboarding-overlay-clear {
   background-color: transparent;
-  pointer-events: auto; /* Intercept clicks on app background to preserve flow */
+  pointer-events: auto;
 }
 
 /* Positional Tooltip Layouts */
-.onboarding-overlay-wrapper.step-1 {
+.onboarding-overlay-wrapper.onboarding-overlay-step-1 {
   align-items: center;
   justify-content: center;
 }
 
-.onboarding-overlay-wrapper.step-2 {
+.onboarding-overlay-wrapper.onboarding-overlay-step-2 {
   align-items: flex-start;
   justify-content: center;
   padding-top: 80px;
 }
 
-.onboarding-overlay-wrapper.step-3 {
+.onboarding-overlay-wrapper.onboarding-overlay-step-3 {
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 64px;
@@ -242,7 +242,7 @@ body.light .onboarding-btn.primary:hover {
     padding: 20px;
     gap: 12px;
   }
-  .onboarding-overlay-wrapper.step-2 {
+  .onboarding-overlay-wrapper.onboarding-overlay-step-2 {
     padding-top: 100px;
   }
 }

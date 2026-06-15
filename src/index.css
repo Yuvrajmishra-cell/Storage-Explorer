@@ -1991,6 +1991,22 @@ body.light .toast-item {
   z-index: 9999;
 }
 
+/* Onboarding — core shell mirrors shortcuts-backdrop so production always gets fixed overlay */
+.onboarding-overlay-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 9999;
+  display: flex;
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+
 .shortcuts-modal-container {
   width: 500px;
   background-color: #111;
@@ -2161,4 +2177,14 @@ body.light .shortcut-keys kbd {
 
 body.light .idb-matrix-row.row-selected {
   background-color: rgba(22, 163, 74, 0.06);
+}
+
+#overlay-root {
+  position: relative;
+  z-index: 9998;
+  pointer-events: none;
+}
+
+#overlay-root > * {
+  pointer-events: auto;
 }

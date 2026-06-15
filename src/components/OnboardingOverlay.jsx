@@ -1,11 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import './OnboardingOverlay.css';
+
+const OVERLAY_ROOT_ID = 'overlay-root';
+
+function getWrapperClassName(step) {
+  if (step === 1) {
+    return 'onboarding-overlay-wrapper onboarding-overlay-step-1 onboarding-overlay-dimmed';
+  }
+  if (step === 2) {
+    return 'onboarding-overlay-wrapper onboarding-overlay-step-2 onboarding-overlay-clear';
+  }
+  return 'onboarding-overlay-wrapper onboarding-overlay-step-3 onboarding-overlay-clear';
+}
 
 export default function OnboardingOverlay({ onDismiss }) {
   const [step, setStep] = useState(1);
+  const [portalTarget, setPortalTarget] = useState(null);
 
   useEffect(() => {
+    const root =
+      document.getElementById(OVERLAY_ROOT_ID) ||
+      document.body;
+    setPortalTarget(root);
     document.body.classList.add('onboarding-active');
     return () => document.body.classList.remove('onboarding-active');
   }, []);
@@ -18,18 +34,14 @@ export default function OnboardingOverlay({ onDismiss }) {
     onDismiss();
   };
 
+  if (!portalTarget) return null;
+
   return createPortal(
     <>
-      {/* Target highlights */}
-      {step === 2 && <div className="onboarding-highlight-top" />}
-      {step === 3 && <div className="onboarding-highlight-bottom" />}
+      {step === 2 && <div className="onboarding-highlight-top" aria-hidden="true" />}
+      {step === 3 && <div className="onboarding-highlight-bottom" aria-hidden="true" />}
 
-      {/* Main Overlay Backdrop */}
-      <div
-        className={`onboarding-overlay-wrapper step-${step} ${
-          step === 1 ? 'dimmed' : 'transparent'
-        }`}
-      >
+      <div className={getWrapperClassName(step)} role="dialog" aria-modal="true" aria-label="StorageExplorer onboarding">
         <div className="onboarding-modal" onClick={(e) => e.stopPropagation()}>
           {step === 1 && (
             <>
@@ -50,7 +62,7 @@ export default function OnboardingOverlay({ onDismiss }) {
               </p>
               <div className="onboarding-footer">
                 <div className="onboarding-actions">
-                  <button className="onboarding-btn primary" onClick={handleNext}>
+                  <button type="button" className="onboarding-btn primary" onClick={handleNext}>
                     Get started →
                   </button>
                 </div>
@@ -66,10 +78,10 @@ export default function OnboardingOverlay({ onDismiss }) {
               </p>
               <div className="onboarding-footer">
                 <div className="onboarding-actions">
-                  <button className="onboarding-btn secondary" onClick={handleSkip}>
+                  <button type="button" className="onboarding-btn secondary" onClick={handleSkip}>
                     Skip
                   </button>
-                  <button className="onboarding-btn primary" onClick={handleNext}>
+                  <button type="button" className="onboarding-btn primary" onClick={handleNext}>
                     Next →
                   </button>
                 </div>
@@ -85,7 +97,7 @@ export default function OnboardingOverlay({ onDismiss }) {
               </p>
               <div className="onboarding-footer">
                 <div className="onboarding-actions">
-                  <button className="onboarding-btn primary" onClick={handleSkip}>
+                  <button type="button" className="onboarding-btn primary" onClick={handleSkip}>
                     Start exploring →
                   </button>
                 </div>
@@ -93,19 +105,18 @@ export default function OnboardingOverlay({ onDismiss }) {
             </>
           )}
 
-          {/* Progress and Skip Controls */}
-          <div className="onboarding-dots">
-            <span className={`onboarding-dot ${step === 1 ? 'active' : ''}`} />
-            <span className={`onboarding-dot ${step === 2 ? 'active' : ''}`} />
-            <span className={`onboarding-dot ${step === 3 ? 'active' : ''}`} />
+          <div className="onboarding-dots" aria-hidden="true">
+            <span className={step === 1 ? 'onboarding-dot active' : 'onboarding-dot'} />
+            <span className={step === 2 ? 'onboarding-dot active' : 'onboarding-dot'} />
+            <span className={step === 3 ? 'onboarding-dot active' : 'onboarding-dot'} />
           </div>
 
-          <button className="onboarding-skip-link" onClick={handleSkip}>
+          <button type="button" className="onboarding-skip-link" onClick={handleSkip}>
             Skip tour
           </button>
         </div>
       </div>
     </>,
-    document.body
+    portalTarget
   );
 }

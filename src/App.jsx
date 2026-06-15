@@ -8,7 +8,7 @@ import DocsPage from './components/DocsPage';
 import AboutPage from './components/AboutPage';
 import NotFoundPage from './components/NotFoundPage';
 import SettingsPage from './components/SettingsPage';
-import OnboardingOverlay from './components/OnboardingOverlay';
+import AppOnboarding from './components/AppOnboarding';
 import ToastContainer from './components/ToastContainer';
 import ShortcutManager from './components/ShortcutManager';
 import KeyboardShortcutsModal from './components/KeyboardShortcutsModal';
@@ -20,7 +20,6 @@ import './index.css';
 import './polish.css';
 
 function StorageExplorerApp() {
-  const [showOnboarding, setShowOnboarding] = React.useState(false);
   const activeEngine = useStore((s) => s.activeEngine);
   const currentStore = useStore((s) => s.currentStore);
   const dbConnection = useStore((s) => s.dbConnection);
@@ -42,13 +41,6 @@ function StorageExplorerApp() {
   };
 
   const updateQuota = useStore((s) => s.updateQuota);
-
-  React.useEffect(() => {
-    const onboarded = localStorage.getItem('dbExplorer_onboarded');
-    if (onboarded !== 'true') {
-      setShowOnboarding(true);
-    }
-  }, []);
 
   React.useEffect(() => {
     void updateQuota();
@@ -137,20 +129,12 @@ function StorageExplorerApp() {
     }
   }, [activeEngine, currentStore, dbConnection, relationCount]);
 
-  const handleDismissOnboarding = () => {
-    localStorage.setItem('dbExplorer_onboarded', 'true');
-    setShowOnboarding(false);
-  };
-
   return (
-    <>
-      <div className="app-container" style={layoutStyle}>
-        <StorageConsole />
-        <ExplorerStage />
-        <StorageTelemetryHUD />
-      </div>
-      {showOnboarding && <OnboardingOverlay onDismiss={handleDismissOnboarding} />}
-    </>
+    <div className="app-container" style={layoutStyle}>
+      <StorageConsole />
+      <ExplorerStage />
+      <StorageTelemetryHUD />
+    </div>
   );
 }
 
@@ -183,6 +167,7 @@ function App() {
       <ShortcutManager />
       <KeyboardShortcutsModal />
       <BrowserRouter>
+        <AppOnboarding />
         <AppRoutes />
       </BrowserRouter>
     </>
