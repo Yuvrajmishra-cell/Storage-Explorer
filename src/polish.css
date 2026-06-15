@@ -273,10 +273,7 @@ button:active:not(:disabled),
   animation: exportBounce 0.4s ease;
 }
 
-/* Landing page */
-.lp-headline {
-  font-size: clamp(36px, 6vw, 64px) !important;
-}
+/* Landing page headline uses the value from LandingPage.css */
 
 .lp-browser-frame {
   box-shadow:

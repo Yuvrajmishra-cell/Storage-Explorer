@@ -7,98 +7,250 @@ import './LandingPage.css';
 
 function ProductScreenshot() {
   return (
-    <div className="lp-screenshot-wrap">
-      <p className="lp-section-label monospace">LIVE PREVIEW</p>
-      <div className="lp-screenshot-glow">
-        <div className="lp-browser-frame">
-          <span className="lp-live-badge monospace">
-            <span className="lp-live-dot" aria-hidden="true" />
-            LIVE
-          </span>
-          <div className="lp-browser-topbar">
-            <div className="lp-browser-dots">
-              <span className="lp-browser-dot red" />
-              <span className="lp-browser-dot yellow" />
-              <span className="lp-browser-dot green" />
-            </div>
-            <div className="lp-browser-url monospace">localhost:5173/app</div>
+    <div className="lp-screenshot-glow">
+      <div className="lp-browser-frame">
+        <span className="lp-live-badge monospace">
+          <span className="lp-live-dot" aria-hidden="true" />
+          LIVE
+        </span>
+        <div className="lp-browser-topbar">
+          <div className="lp-browser-dots">
+            <span className="lp-browser-dot red" />
+            <span className="lp-browser-dot yellow" />
+            <span className="lp-browser-dot green" />
           </div>
-          <div className="lp-screenshot">
-            <div className="ss-topbar">
-              <div className="ss-topbar-left">
-                <span className="ss-btn">CONNECT</span>
-                <span className="ss-badge">INDEXEDDB</span>
-                <span className="ss-btn">NEW STORE</span>
-                <span className="ss-btn">PURGE</span>
-                <span className="ss-btn">EXPORT JSON</span>
+          <div className="lp-browser-url monospace">localhost:5173/app</div>
+        </div>
+        <div className="lp-screenshot">
+          <div className="ss-topbar">
+            <div className="ss-topbar-left">
+              <span className="ss-btn">CONNECT</span>
+              <span className="ss-badge">INDEXEDDB</span>
+              <span className="ss-btn">NEW STORE</span>
+              <span className="ss-btn">PURGE</span>
+              <span className="ss-btn">EXPORT JSON</span>
+            </div>
+            <div className="ss-topbar-right">
+              <span className="ss-pill">LOCAL</span>
+              <span className="ss-pill">SESSION</span>
+              <span className="ss-pill active">IDB</span>
+              <span className="ss-filter">filter stores…</span>
+            </div>
+          </div>
+
+          <div className="ss-main">
+            <div className="ss-left">
+              <div className="ss-panel-header">STORES</div>
+              <div className="ss-tree-item selected">
+                <span className="ss-store-dot" /> USERS
               </div>
-              <div className="ss-topbar-right">
-                <span className="ss-pill">LOCAL</span>
-                <span className="ss-pill">SESSION</span>
-                <span className="ss-pill active">IDB</span>
-                <span className="ss-filter">filter stores…</span>
+              <div className="ss-tree-item">
+                <span className="ss-store-dot" /> ORDERS
+              </div>
+              <div className="ss-tree-item">
+                <span className="ss-store-dot" /> PRODUCTS
               </div>
             </div>
 
-            <div className="ss-main">
-              <div className="ss-left">
-                <div className="ss-panel-header">STORES</div>
-                <div className="ss-tree-item selected">
-                  <span className="ss-store-dot" /> USERS
-                </div>
-                <div className="ss-tree-item">
-                  <span className="ss-store-dot" /> ORDERS
-                </div>
-                <div className="ss-tree-item">
-                  <span className="ss-store-dot" /> PRODUCTS
-                </div>
+            <div className="ss-right">
+              <div className="ss-panel-header">
+                IndexedDB › users <span className="ss-count">3 records</span>
               </div>
-
-              <div className="ss-right">
-                <div className="ss-panel-header">
-                  IndexedDB › users <span className="ss-count">3 records</span>
+              <div className="ss-table ss-table-idb">
+                <div className="ss-table-header">
+                  <span>ID</span>
+                  <span>NAME</span>
+                  <span>EMAIL</span>
+                  <span>ROLE</span>
                 </div>
-                <div className="ss-table ss-table-idb">
-                  <div className="ss-table-header">
-                    <span>ID</span>
-                    <span>NAME</span>
-                    <span>EMAIL</span>
-                    <span>ROLE</span>
-                  </div>
-                  <div className="ss-table-row even">
-                    <span className="ss-val">1</span>
-                    <span className="ss-val">Alice Chen</span>
-                    <span className="ss-val">alice@acme.io</span>
-                    <span className="ss-val">admin</span>
-                  </div>
-                  <div className="ss-table-row odd">
-                    <span className="ss-val">2</span>
-                    <span className="ss-val">Bob Rivera</span>
-                    <span className="ss-val">bob@acme.io</span>
-                    <span className="ss-val">editor</span>
-                  </div>
-                  <div className="ss-table-row even">
-                    <span className="ss-val">3</span>
-                    <span className="ss-val">Carol Wu</span>
-                    <span className="ss-val">carol@acme.io</span>
-                    <span className="ss-val">viewer</span>
-                  </div>
+                <div className="ss-table-row even">
+                  <span className="ss-val">1</span>
+                  <span className="ss-val">Alice Chen</span>
+                  <span className="ss-val">alice@acme.io</span>
+                  <span className="ss-val">admin</span>
+                </div>
+                <div className="ss-table-row odd">
+                  <span className="ss-val">2</span>
+                  <span className="ss-val">Bob Rivera</span>
+                  <span className="ss-val">bob@acme.io</span>
+                  <span className="ss-val">editor</span>
+                </div>
+                <div className="ss-table-row even">
+                  <span className="ss-val">3</span>
+                  <span className="ss-val">Carol Wu</span>
+                  <span className="ss-val">carol@acme.io</span>
+                  <span className="ss-val">viewer</span>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="ss-hud ss-hud-compact">
-              <span className="ss-hud-dot" />
-              <span>ENGINE: <strong className="ss-green">INDEXEDDB</strong></span>
-              <span className="ss-divider" />
-              <span>USED: 5.2 KB / 11 GB</span>
-              <span className="ss-divider" />
-              <span>QUOTA: <span className="ss-bar"><span className="ss-bar-fill" style={{ width: '40%' }} /></span> 4%</span>
-              <span className="ss-divider" />
-              <span>LAST OP: GETALL &quot;users&quot; — 3ms</span>
-              <span className="ss-divider" />
-              <span>RELATIONS: <strong className="ss-green">2 INFERRED</strong></span>
+          <div className="ss-hud ss-hud-compact">
+            <span className="ss-hud-dot" />
+            <span>ENGINE: <strong className="ss-green">INDEXEDDB</strong></span>
+            <span className="ss-divider" />
+            <span>USED: 5.2 KB / 11 GB</span>
+            <span className="ss-divider" />
+            <span>QUOTA: <span className="ss-bar"><span className="ss-bar-fill" style={{ width: '40%' }} /></span> 4%</span>
+            <span className="ss-divider" />
+            <span>LAST OP: GETALL &quot;users&quot; — 3ms</span>
+            <span className="ss-divider" />
+            <span>RELATIONS: <strong className="ss-green">2 INFERRED</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function HeroCodePanel() {
+  return (
+    <div className="lp-hero-code-panel">
+      <div className="lp-mini-panel-header">
+        <span className="lp-mini-dot" />
+        unified storage
+      </div>
+      <span className="lp-code-line"><span className="lp-code-keyword">const</span> db = <span className="lp-code-fn">connect</span>(<span className="lp-code-string">&quot;MyAppDB&quot;</span>);</span>
+      <span className="lp-code-line"><span className="lp-code-keyword">await</span> db.<span className="lp-code-fn">stores</span>();</span>
+      <span className="lp-code-line"><span className="lp-code-comment">// users, orders, products</span></span>
+      <span className="lp-code-line">db.<span className="lp-code-fn">export</span>(<span className="lp-code-string">&quot;json&quot;</span>);</span>
+    </div>
+  );
+}
+
+function HeroSchemaPanel() {
+  return (
+    <div className="lp-hero-schema-panel">
+      <div className="lp-mini-panel-header">
+        <span className="lp-mini-dot" />
+        inferred schema
+      </div>
+      <div className="lp-hero-schema-node">
+        <span>users</span>
+        <strong>id</strong>
+      </div>
+      <div className="lp-hero-schema-link">users.id {'->'} orders.userId</div>
+      <div className="lp-hero-schema-node">
+        <span>orders</span>
+        <strong>userId</strong>
+      </div>
+    </div>
+  );
+}
+
+function HeroVisualComposition() {
+  return (
+    <div className="lp-hero-visual-stage">
+      <div className="lp-hero-visual-stack">
+        <div className="lp-hero-panel lp-hero-panel-main">
+          <ProductScreenshot />
+        </div>
+        <div className="lp-hero-panel lp-hero-panel-code">
+          <HeroCodePanel />
+        </div>
+        <div className="lp-hero-panel lp-hero-panel-schema">
+          <HeroSchemaPanel />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Social Proof Row ─────────────────────────────────────── */
+
+function SocialProofRow() {
+  const items = [
+    { name: 'Chrome', icon: 'ti-brand-chrome' },
+    { name: 'Firefox', icon: 'ti-brand-firefox' },
+    { name: 'Safari', icon: 'ti-brand-safari' },
+    { name: 'IndexedDB', icon: 'ti-database' },
+    { name: 'LocalStorage', icon: 'ti-archive' },
+    { name: 'SessionStorage', icon: 'ti-clock' },
+  ];
+
+  return (
+    <section className="lp-social-proof fade-in-section">
+      <div className="lp-social-proof-inner">
+        <p className="lp-social-proof-label">Powering storage workflows from prototypes to production</p>
+        <div className="lp-social-proof-icons">
+          {items.map((item) => (
+            <div key={item.name} className="lp-social-proof-item">
+              <div className="lp-social-proof-icon">
+                <i className={`ti ${item.icon}`} />
+              </div>
+              <span className="lp-social-proof-name">{item.name}</span>
             </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SectionHeader({ eyebrow, title, desc }) {
+  return (
+    <div className="lp-section-header">
+      {eyebrow && <span className="lp-section-badge monospace">{eyebrow}</span>}
+      <h2 className="lp-section-title">{title}</h2>
+      {desc && <p className="lp-section-sub">{desc}</p>}
+    </div>
+  );
+}
+
+/* ── Feature Showcase: Code Snippet Visual ────────────────── */
+
+function UnifiedStorageVisual() {
+  return (
+    <div className="lp-showcase-visual">
+      <div className="lp-showcase-code-card">
+        <span className="lp-code-line"><span className="lp-code-comment">// One interface for all browser storage</span></span>
+        <span className="lp-code-line"><span className="lp-code-keyword">const</span> engines = [</span>
+        <span className="lp-code-line">  <span className="lp-code-string">&quot;localStorage&quot;</span>,</span>
+        <span className="lp-code-line">  <span className="lp-code-string">&quot;sessionStorage&quot;</span>,</span>
+        <span className="lp-code-line">  <span className="lp-code-string">&quot;indexedDB&quot;</span></span>
+        <span className="lp-code-line">];</span>
+        <span className="lp-code-line">&nbsp;</span>
+        <span className="lp-code-line"><span className="lp-code-comment">// Browse, edit, and export — no setup</span></span>
+        <span className="lp-code-line"><span className="lp-code-fn">explorer</span>.<span className="lp-code-fn">connect</span>(<span className="lp-code-string">&quot;MyAppDB&quot;</span>);</span>
+        <span className="lp-code-line"><span className="lp-code-fn">explorer</span>.<span className="lp-code-fn">getAll</span>(<span className="lp-code-string">&quot;users&quot;</span>); <span className="lp-code-comment">// → 248 records</span></span>
+        <span className="lp-code-line"><span className="lp-code-fn">explorer</span>.<span className="lp-code-fn">export</span>(<span className="lp-code-string">&quot;json&quot;</span>);  <span className="lp-code-comment">// → myappdb.json</span></span>
+      </div>
+    </div>
+  );
+}
+
+/* ── Feature Showcase: Schema Relations Visual ────────────── */
+
+function SchemaRelationsVisual() {
+  return (
+    <div className="lp-showcase-visual">
+      <div className="lp-showcase-schema-card">
+        <div className="lp-schema-table">
+          <div className="lp-schema-table-header">
+            <i className="ti ti-table" /> users
+          </div>
+          <div className="lp-schema-cols">
+            <div className="lp-schema-col"><span className="lp-schema-col-pk">PK</span> id</div>
+            <div className="lp-schema-col">name</div>
+            <div className="lp-schema-col">email</div>
+          </div>
+        </div>
+
+        <div className="lp-schema-relation">
+          <span className="lp-schema-relation-line" />
+          <span className="lp-schema-relation-label">users.id → orders.userId</span>
+          <span className="lp-schema-relation-line" />
+        </div>
+
+        <div className="lp-schema-table" style={{ marginTop: '16px' }}>
+          <div className="lp-schema-table-header">
+            <i className="ti ti-table" /> orders
+          </div>
+          <div className="lp-schema-cols">
+            <div className="lp-schema-col"><span className="lp-schema-col-pk">PK</span> id</div>
+            <div className="lp-schema-col"><span className="lp-schema-col-fk">FK</span> userId</div>
+            <div className="lp-schema-col">total</div>
+            <div className="lp-schema-col">status</div>
           </div>
         </div>
       </div>
@@ -251,40 +403,31 @@ const FEATURES = [
     icon: 'ti-database',
     title: 'Unified view',
     desc: 'LocalStorage, SessionStorage, and IndexedDB from one interface.',
-    size: 'large',
-    decoration: 'ascii-table',
   },
   {
     icon: 'ti-edit',
     title: 'Live editing',
     desc: 'Double-click any cell to edit. Writes to real browser storage instantly.',
-    size: 'small',
-    decoration: 'editing',
   },
   {
     icon: 'ti-chart-bar',
     title: 'Quota monitor',
     desc: 'See storage usage update live after every read and write operation.',
-    size: 'small',
   },
   {
     icon: 'ti-git-branch',
     title: 'Schema inspector',
     desc: 'Auto-detects foreign key relationships across your object stores.',
-    size: 'large',
   },
   {
     icon: 'ti-download',
     title: 'JSON export',
     desc: 'Download a full backup of any storage engine with one click.',
-    size: 'equal',
-    decoration: 'json',
   },
   {
     icon: 'ti-bookmark',
     title: 'Workspace memory',
     desc: 'Remembers your last engine, open stores, and layout on reload.',
-    size: 'equal',
   },
 ];
 
@@ -303,31 +446,6 @@ const PERSONAS = [
   { icon: 'ti-bug', title: 'QA engineers', desc: 'Audit storage state before and after test scenarios' },
   { icon: 'ti-chart-bar', title: 'Students & learners', desc: 'Understand how browser storage works with a visual, interactive tool' },
 ];
-
-function FeatureDecoration({ type }) {
-  if (type === 'ascii-table') {
-    return (
-      <pre className="lp-feature-deco lp-feature-deco-ascii" aria-hidden="true">
-        {`┌──┬──┐\n│k │v │\n└──┴──┘`}
-      </pre>
-    );
-  }
-  if (type === 'editing') {
-    return (
-      <span className="lp-feature-deco lp-feature-deco-edit monospace" aria-hidden="true">
-        ▌editing<span className="lp-feature-deco-cursor">...</span>
-      </span>
-    );
-  }
-  if (type === 'json') {
-    return (
-      <span className="lp-feature-deco lp-feature-deco-json monospace" aria-hidden="true">
-        {'{ json: true }'}
-      </span>
-    );
-  }
-  return null;
-}
 
 function ComparisonCell({ value }) {
   if (value === '✓') return <span className="lp-cmp-yes">✓</span>;
@@ -362,158 +480,87 @@ export default function LandingPage() {
 
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="lp-hero">
-        <div className="lp-hero-glow" aria-hidden="true" />
-        <div className="lp-hero-container">
-          <span className="lp-eyebrow">browser devtools, reimagined</span>
-          <h1 className="lp-headline">Your browser's database,<br/>finally visible.</h1>
-          <p className="lp-sub">
-            Inspect, edit, and export LocalStorage, SessionStorage, and IndexedDB —<br/>
-            no extensions, no servers, just your browser.
-          </p>
-          <div className="lp-hero-actions">
-            <button className="lp-btn-primary" onClick={() => navigate('/app')}>Launch Explorer →</button>
-            <button className="lp-btn-secondary" onClick={() => navigate('/docs')}>View Docs</button>
+        <div className="lp-hero-grid">
+          <div className="lp-hero-copy">
+            <span className="lp-eyebrow">browser devtools, reimagined</span>
+            <h1 className="lp-headline">Your browser's database,<br/>finally visible.</h1>
+            <p className="lp-sub">
+              Inspect, edit, and export LocalStorage, SessionStorage, and IndexedDB —
+              no extensions, no servers, just your browser.
+            </p>
+            <div className="lp-hero-ctas">
+              <button className="lp-cta" onClick={() => navigate('/app')}>Launch Explorer →</button>
+              <button className="lp-cta-ghost" onClick={() => navigate('/docs')}>View Docs</button>
+            </div>
+            <p className="lp-compat">Works in Chrome, Firefox, Safari. No install needed.</p>
           </div>
-          <p className="lp-compat">Works in Chrome, Firefox, Safari. No install needed.</p>
-          
+
           <div className="lp-hero-visual">
-            <ProductScreenshot />
+            <HeroVisualComposition />
           </div>
         </div>
       </section>
 
-      {/* ── SOCIAL PROOF ROW ──────────────────────────────── */}
-      <section className="lp-social-proof fade-in-section">
-        <div className="lp-social-container">
-          <p className="lp-social-label monospace">WORKS SEAMLESSLY WITH</p>
-          <div className="lp-social-logos">
-            <div className="lp-social-logo">
-              <i className="ti ti-brand-chrome" />
-              <span>Chrome</span>
-            </div>
-            <div className="lp-social-logo">
-              <i className="ti ti-brand-firefox" />
-              <span>Firefox</span>
-            </div>
-            <div className="lp-social-logo">
-              <i className="ti ti-brand-safari" />
-              <span>Safari</span>
-            </div>
-            <div className="lp-social-logo">
-              <i className="ti ti-database" />
-              <span>IndexedDB</span>
-            </div>
-            <div className="lp-social-logo">
-              <i className="ti ti-server" />
-              <span>LocalStorage</span>
-            </div>
-            <div className="lp-social-logo">
-              <i className="ti ti-clock" />
-              <span>SessionStorage</span>
-            </div>
+      {/* ── SOCIAL PROOF ─────────────────────────────────── */}
+      <SocialProofRow />
+
+      {/* ── STATS GRID ───────────────────────────────────── */}
+      <section className="lp-stats-bar fade-in-section">
+        <div className="lp-stats-container">
+          <div className="lp-stat-item">
+            <span className="lp-stat-number">3</span>
+            <span className="lp-stat-label">Storage APIs</span>
+          </div>
+          <div className="lp-stat-item">
+            <span className="lp-stat-number">6</span>
+            <span className="lp-stat-label">Core Features</span>
+          </div>
+          <div className="lp-stat-item">
+            <span className="lp-stat-number">&lt; 1s</span>
+            <span className="lp-stat-label">Load Time</span>
+          </div>
+          <div className="lp-stat-item">
+            <span className="lp-stat-number">100%</span>
+            <span className="lp-stat-label">Client-side</span>
           </div>
         </div>
       </section>
 
-      {/* ── STATS SECTION ────────────────────────────────── */}
-      <section className="lp-stats-section fade-in-section">
-        <div className="lp-stats-grid-container">
-          <div className="lp-stat-card">
-            <span className="lp-stat-card-number monospace">3</span>
-            <span className="lp-stat-card-label monospace">STORAGE APIs</span>
+      {/* ── FEATURE SHOWCASE 1: Unified Storage ──────────── */}
+      <section className="lp-showcase fade-in-section">
+        <div className="lp-showcase-inner">
+          <div className="lp-showcase-text">
+            <span className="lp-showcase-badge">StorageExplorer | Core</span>
+            <h2 className="lp-showcase-heading">All your browser storage,<br/>one unified interface.</h2>
+            <p className="lp-showcase-desc">
+              Switch between LocalStorage, SessionStorage, and IndexedDB without opening
+              multiple DevTools panels. Browse records in a familiar table view, filter by key,
+              and edit any value with a double-click.
+            </p>
+            <button className="lp-showcase-cta" onClick={() => navigate('/docs')}>
+              Explore Docs →
+            </button>
           </div>
-          <div className="lp-stat-card">
-            <span className="lp-stat-card-number monospace">6</span>
-            <span className="lp-stat-card-label monospace">CORE FEATURES</span>
-          </div>
-          <div className="lp-stat-card">
-            <span className="lp-stat-card-number monospace">&lt; 1s</span>
-            <span className="lp-stat-card-label monospace">LOAD TIME</span>
-          </div>
-          <div className="lp-stat-card">
-            <span className="lp-stat-card-number monospace">100%</span>
-            <span className="lp-stat-card-label monospace">CLIENT-SIDE</span>
-          </div>
+          <UnifiedStorageVisual />
         </div>
       </section>
 
-      {/* ── ALTERNATING FEATURES ─────────────────────────── */}
-      <section className="lp-features-alt fade-in-section">
-        <div className="lp-features-alt-container">
-          {/* Feature Row 1 */}
-          <div className="lp-feature-row">
-            <div className="lp-feature-text">
-              <span className="lp-feature-badge monospace">StorageExplorer | Core</span>
-              <h2 className="lp-feature-heading monospace">Inspect and edit database tables live</h2>
-              <p className="lp-feature-desc">
-                Double click any field in LocalStorage or IndexedDB to update records instantly. 
-                Manage complex schema stores and save edits back to real browser storage with zero overhead.
-              </p>
-              <button className="lp-btn-ghost" onClick={() => navigate('/docs')}>
-                Explore Docs →
-              </button>
-            </div>
-            <div className="lp-feature-visual-wrap">
-              <div className="lp-feature-card-visual">
-                <div className="visual-card-header">
-                  <span className="visual-dot red" />
-                  <span className="visual-dot yellow" />
-                  <span className="visual-dot green" />
-                  <span className="visual-title monospace">users_store.js</span>
-                </div>
-                <div className="visual-card-content monospace">
-                  <div className="code-line"><span className="code-key">const</span> db = <span className="code-fn">await</span> openDB(<span className="code-str">'AppDB'</span>);</div>
-                  <div className="code-line"><span className="code-key">const</span> tx = db.transaction(<span className="code-str">'users'</span>, <span className="code-str">'readwrite'</span>);</div>
-                  <div className="code-line">tx.objectStore(<span className="code-str">'users'</span>).put({"{"}</div>
-                  <div className="code-line indent"><span className="code-prop">id</span>: <span className="code-num">42</span>,</div>
-                  <div className="code-line indent"><span className="code-prop">name</span>: <span className="code-str">'Jane Doe'</span>,</div>
-                  <div className="code-line indent"><span className="code-prop">role</span>: <span className="code-str">'Administrator'</span></div>
-                  <div className="code-line">{"}"});</div>
-                  <div className="code-highlight-bar">
-                    <span className="code-comment">// Double click row in explorer to trigger put()</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+      {/* ── FEATURE SHOWCASE 2: Schema Detection ─────────── */}
+      <section className="lp-showcase lp-showcase-alt lp-showcase-reverse fade-in-section">
+        <div className="lp-showcase-inner">
+          <div className="lp-showcase-text">
+            <span className="lp-showcase-badge">StorageExplorer | Advanced</span>
+            <h2 className="lp-showcase-heading">Auto-detect relationships<br/>across your data.</h2>
+            <p className="lp-showcase-desc">
+              StorageExplorer analyzes your IndexedDB object stores and automatically
+              infers foreign key relationships — giving you a schema-level view of
+              your client-side database without any configuration.
+            </p>
+            <button className="lp-showcase-cta" onClick={() => navigate('/docs')}>
+              Explore Docs →
+            </button>
           </div>
-
-          {/* Feature Row 2 */}
-          <div className="lp-feature-row lp-feature-row-reverse">
-            <div className="lp-feature-text">
-              <span className="lp-feature-badge monospace">StorageExplorer | Relations</span>
-              <h2 className="lp-feature-heading monospace">Auto-inferred database schemas</h2>
-              <p className="lp-feature-desc">
-                Our inference engine parses data structures within your IndexedDB object stores 
-                to automatically detect relationships and foreign keys. Visualize connections across tables without manual setup.
-              </p>
-              <button className="lp-btn-ghost" onClick={() => navigate('/docs')}>
-                Explore Docs →
-              </button>
-            </div>
-            <div className="lp-feature-visual-wrap">
-              <div className="lp-feature-card-visual relations-map">
-                <div className="relations-node">
-                  <div className="node-header monospace">users</div>
-                  <div className="node-fields monospace">
-                    <div>🔑 id: number</div>
-                    <div className="field-related">name: string ──┐</div>
-                  </div>
-                </div>
-                <div className="relations-connector">
-                  <span className="connector-line"></span>
-                  <span className="connector-badge monospace">1 : N</span>
-                </div>
-                <div className="relations-node">
-                  <div className="node-header monospace">orders</div>
-                  <div className="node-fields monospace">
-                    <div>🔑 id: number</div>
-                    <div className="field-foreign">🔗 userId: number</div>
-                    <div>total: number</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <SchemaRelationsVisual />
         </div>
       </section>
 
@@ -524,19 +571,21 @@ export default function LandingPage() {
 
       {/* ── FEATURES GRID ────────────────────────────────── */}
       <section className="lp-features fade-in-section">
-        <span className="lp-features-eyebrow monospace">WHY STORAGEEXPLORER</span>
-        <h2 className="lp-features-title">Everything you need to inspect browser storage</h2>
+        <SectionHeader
+          eyebrow="Why StorageExplorer"
+          title="Everything you need to inspect browser storage"
+          desc="A focused toolkit for viewing, editing, backing up, and understanding client-side data without leaving your app context."
+        />
         <div className="lp-features-grid">
           {FEATURES.map((card, idx) => (
             <div
               key={card.title}
-              className={`lp-feature-card lp-feature-${card.size}`}
+              className="lp-feature-card"
               data-index={idx}
             >
               <i className={`ti ${card.icon} lp-feature-icon`} />
               <h3 className="lp-feature-title-text">{card.title}</h3>
               <p className="lp-feature-desc-text">{card.desc}</p>
-              {card.decoration && <FeatureDecoration type={card.decoration} />}
             </div>
           ))}
         </div>
@@ -544,8 +593,11 @@ export default function LandingPage() {
 
       {/* ── COMPARISON TABLE ─────────────────────────────── */}
       <section className="lp-comparison fade-in-section">
-        <p className="lp-section-label monospace">VS BROWSER DEVTOOLS</p>
-        <h2 className="lp-comparison-title">Everything DevTools can&apos;t do</h2>
+        <SectionHeader
+          eyebrow="Vs Browser DevTools"
+          title="Everything DevTools can&apos;t do"
+          desc="Purpose-built controls for the storage jobs that usually take too many tabs, panels, and manual exports."
+        />
         <div className="lp-comparison-table">
           <div className="lp-comparison-header">
             <span>Feature</span>
@@ -590,7 +642,11 @@ export default function LandingPage() {
 
       {/* ── HOW IT WORKS ─────────────────────────────────── */}
       <section className="lp-how fade-in-section">
-        <h2 className="lp-how-title">How it works</h2>
+        <SectionHeader
+          eyebrow="Fast Workflow"
+          title="How it works"
+          desc="Connect, inspect, and export in a short loop that stays close to the data you are debugging."
+        />
         <div className="lp-how-steps">
           <div className="lp-how-step">
             <span className="lp-how-step-num monospace">01</span>
