@@ -143,12 +143,14 @@ function StorageExplorerApp() {
   };
 
   return (
-    <div className="app-container" style={layoutStyle}>
-      <StorageConsole />
-      <ExplorerStage />
-      <StorageTelemetryHUD />
+    <>
+      <div className="app-container" style={layoutStyle}>
+        <StorageConsole />
+        <ExplorerStage />
+        <StorageTelemetryHUD />
+      </div>
       {showOnboarding && <OnboardingOverlay onDismiss={handleDismissOnboarding} />}
-    </div>
+    </>
   );
 }
 

@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import './OnboardingOverlay.css';
 
 export default function OnboardingOverlay({ onDismiss }) {
   const [step, setStep] = useState(1);
+
+  useEffect(() => {
+    document.body.classList.add('onboarding-active');
+    return () => document.body.classList.remove('onboarding-active');
+  }, []);
 
   const handleNext = () => {
     setStep((prev) => prev + 1);
@@ -12,7 +18,7 @@ export default function OnboardingOverlay({ onDismiss }) {
     onDismiss();
   };
 
-  return (
+  return createPortal(
     <>
       {/* Target highlights */}
       {step === 2 && <div className="onboarding-highlight-top" />}
@@ -99,6 +105,7 @@ export default function OnboardingOverlay({ onDismiss }) {
           </button>
         </div>
       </div>
-    </>
+    </>,
+    document.body
   );
 }

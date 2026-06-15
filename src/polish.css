@@ -65,7 +65,7 @@ button:active:not(:disabled),
 .idb-add-modal-overlay > .idb-add-modal,
 .modal-overlay > .modal-content,
 .keyboard-shortcuts-overlay > .keyboard-shortcuts-modal,
-.onboarding-overlay > .onboarding-modal {
+.onboarding-overlay-wrapper > .onboarding-modal {
   animation: slideUp 200ms ease;
 }
 
