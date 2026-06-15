@@ -151,11 +151,12 @@ body.light .landing-page {
 .lp-hero {
   position: relative;
   text-align: center;
-  padding: 64px 24px 56px;
+  padding: 64px 40px 56px;
   width: 100%;
   background-color: transparent;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 /* Dot grid background */
@@ -200,7 +201,7 @@ body.light .lp-hero::after {
 
 .lp-hero-grid {
   width: 100%;
-  max-width: 1160px;
+  max-width: 1240px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -407,19 +408,19 @@ body.light .lp-hero::after {
 /* ── Hero Product Screenshot (3D Tilt) ────────────────────── */
 
 .lp-hero-visual {
-  width: min(100%, 640px);
+  width: min(100%, 720px);
   max-width: 100%;
   margin: 0 auto;
   perspective: 1400px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .lp-hero-visual-stage {
   position: relative;
-  height: clamp(390px, 54vw, 490px);
+  height: clamp(430px, 44vw, 540px);
   min-height: 0;
   isolation: isolate;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .lp-hero-visual-stage::before,
@@ -458,26 +459,26 @@ body.light .lp-hero::after {
 
 .lp-hero-panel-main {
   z-index: 2;
-  left: 6px;
-  top: 96px;
-  width: 82%;
+  left: 0;
+  top: 122px;
+  width: 84%;
   transform: translateZ(20px);
 }
 
 .lp-hero-panel-code {
   z-index: 4;
-  right: 8px;
-  top: 30px;
-  width: 42%;
-  min-width: 214px;
+  right: 0;
+  top: 24px;
+  width: 52%;
+  min-width: 320px;
   transform: translateZ(95px) translateY(8px) rotateZ(1deg);
 }
 
 .lp-hero-panel-schema {
   z-index: 3;
-  right: 26px;
-  bottom: 30px;
-  width: 42%;
+  right: 18px;
+  bottom: 36px;
+  width: 44%;
   min-width: 214px;
   transform: translateZ(70px) rotateZ(-1.4deg);
 }
@@ -534,7 +535,7 @@ body.light .lp-hero::after {
   position: relative;
   z-index: 1;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.72;
 }
 
