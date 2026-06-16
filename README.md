@@ -11,19 +11,19 @@ Built as a college project at **ITM University** (2026).
 ## Screenshots
 
 ### Landing page
-![StorageExplorer landing page](docs/screenshots/home.png)
+![StorageExplorer landing page](docs/screenshots/home_v2.png)
 
 ### Explorer workspace
-![StorageExplorer app workspace](docs/screenshots/app.png)
+![StorageExplorer app workspace](docs/screenshots/app_v2.png)
 
 ### Pricing page
-![StorageExplorer pricing page](docs/screenshots/pricing.png)
+![StorageExplorer pricing page](docs/screenshots/pricing_v2.png)
 
 ### Documentation page
-![StorageExplorer documentation page](docs/screenshots/docs.png)
+![StorageExplorer documentation page](docs/screenshots/docs_v2.png)
 
 ### About page
-![StorageExplorer about page](docs/screenshots/about.png)
+![StorageExplorer about page](docs/screenshots/about_v2.png)
 
 ---
 
