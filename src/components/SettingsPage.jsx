@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import useStore from '../store/useStore';
 import SiteNavbar from './SiteNavbar';
+import { usePlan } from '../plan/usePlan';
 import './SettingsPage.css';
 
 const NAV_SECTIONS = [
@@ -23,6 +24,7 @@ const NAV_SECTIONS = [
     group: 'WORKSPACE',
     items: [
       { id: 'onboarding', label: 'Onboarding' },
+      { id: 'plan-testing', label: 'Plan testing' },
       { id: 'keyboard-shortcuts', label: 'Keyboard shortcuts' },
       { id: 'danger-zone', label: 'Danger zone' },
     ],
@@ -162,6 +164,15 @@ export default function SettingsPage() {
   const triggerRefresh = useStore((s) => s.triggerRefresh);
   const theme = useStore((s) => s.theme);
   const setTheme = useStore((s) => s.setTheme);
+  const {
+    plan,
+    isPro,
+    exportCountToday,
+    freeDatabaseName,
+    setPlan,
+    clearExportUsage,
+    clearFreeDatabase,
+  } = usePlan();
 
   const [activeSection, setActiveSection] = useState('theme');
   const [savedKeys, setSavedKeys] = useState({});
@@ -256,6 +267,13 @@ export default function SettingsPage() {
     setDangerConfirm(null);
     showToast('Settings reset. Redirecting…', 'warning');
     setTimeout(() => navigate('/'), 1500);
+  };
+
+  const handlePlanToggle = (checked) => {
+    const nextPlan = checked ? 'pro' : 'free';
+    setPlan(nextPlan);
+    showToast(`Plan simulation set to ${nextPlan.toUpperCase()}`, 'success');
+    markSaved('plan');
   };
 
   return (
@@ -533,6 +551,56 @@ export default function SettingsPage() {
               </div>
               <div className="settings-info-card monospace">
                 The walkthrough runs automatically on first visit. Resetting it here will show it again on next app load.
+              </div>
+            </section>
+
+            {/* SHORTCUTS */}
+            <section id="plan-testing" className="settings-section">
+              <SectionHeading title="Plan testing" />
+              <p className="settings-section-desc">Developer-only simulation controls for pricing and usage-limit QA.</p>
+              <div className="settings-row">
+                <div className="settings-row-text">
+                  <div className="settings-row-label">Simulate Pro plan</div>
+                  <div className="settings-row-desc">Turns off free limits locally. No payment is processed.</div>
+                </div>
+                <div className="settings-row-control">
+                  <SavedCheck visible={savedKeys.plan} />
+                  <span className={`settings-plan-pill monospace ${plan}`}>{plan.toUpperCase()}</span>
+                  <Toggle checked={isPro} onChange={handlePlanToggle} />
+                </div>
+              </div>
+              <div className="settings-row settings-row-last">
+                <div className="settings-row-text">
+                  <div className="settings-row-label">Free usage snapshot</div>
+                  <div className="settings-row-desc">
+                    Exports today: {exportCountToday}/3 · Free database: {freeDatabaseName || 'not claimed yet'}
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  className="settings-btn-outline monospace"
+                  onClick={() => {
+                    clearExportUsage();
+                    showToast('Daily export usage reset', 'success');
+                    markSaved('planUsage');
+                  }}
+                >
+                  Reset export usage
+                </button>
+                <button
+                  type="button"
+                  className="settings-btn-outline monospace"
+                  onClick={() => {
+                    clearFreeDatabase();
+                    showToast('Free database claim reset', 'success');
+                    markSaved('planDatabase');
+                  }}
+                >
+                  Reset database claim
+                </button>
+              </div>
+              <div className="settings-info-card monospace">
+                This toggle only stores a local plan flag for testing. The production payment source can replace it later.
               </div>
             </section>
 

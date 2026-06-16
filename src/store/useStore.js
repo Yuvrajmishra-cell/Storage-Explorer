@@ -117,6 +117,7 @@ const useStore = create((set, get) => ({
   toasts: [],
   showShortcutsModal: false,
   idbConnectModalOpen: false,
+  upgradePrompt: null,
   refreshTrigger: 0,
 
   setActiveEngine: (engine) => {
@@ -283,6 +284,8 @@ const useStore = create((set, get) => ({
     toasts: state.toasts.filter((t) => t.id !== id),
   })),
   setShowShortcutsModal: (val) => set({ showShortcutsModal: val }),
+  showUpgradePrompt: (feature, message) => set({ upgradePrompt: { feature, message } }),
+  closeUpgradePrompt: () => set({ upgradePrompt: null }),
   triggerRefresh: () => set((state) => ({ refreshTrigger: state.refreshTrigger + 1 })),
 }));
 

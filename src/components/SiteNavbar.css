@@ -160,15 +160,15 @@ body.light .site-navbar-settings-btn.active {
   }
 
   .site-navbar-links {
-    gap: 10px;
+    gap: 8px;
   }
 
   .site-nav-link {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .site-navbar-launch-btn {
-    padding: 6px 12px;
-    font-size: 12px;
+    padding: 6px 10px;
+    font-size: 11px;
   }
 }

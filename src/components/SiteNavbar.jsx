@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import './SiteNavbar.css';
@@ -29,6 +29,9 @@ export default function SiteNavbar({ showDocsBadge = false }) {
         </NavLink>
         <NavLink to="/docs" className={({ isActive }) => `site-nav-link${isActive ? ' active' : ''}`}>
           Docs
+        </NavLink>
+        <NavLink to="/pricing" className={({ isActive }) => `site-nav-link${isActive ? ' active' : ''}`}>
+          Pricing
         </NavLink>
         <NavLink to="/about" className={({ isActive }) => `site-nav-link${isActive ? ' active' : ''}`}>
           About

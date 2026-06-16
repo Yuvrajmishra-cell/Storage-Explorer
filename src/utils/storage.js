@@ -1,4 +1,11 @@
 import useStore from '../store/useStore';
+import {
+  PLAN_LIMITS,
+  canExportToday,
+  getExportCountToday,
+  isProPlan,
+  recordExportToday,
+} from './planLimits';
 
 /**
  * Keys written by StorageExplorer itself — hidden from the storage browser UI.
@@ -150,6 +157,15 @@ export async function updateQuota() {
  */
 export async function exportStorageData(engine, dbConnection) {
   const state = useStore.getState();
+  if (!isProPlan() && !canExportToday()) {
+    state.showUpgradePrompt(
+      'export',
+      `Free workspaces include ${PLAN_LIMITS.free.exportsPerDay} JSON exports per day. You have used all ${getExportCountToday()} today.`
+    );
+    state.showToast('Daily export limit reached', 'warning');
+    return false;
+  }
+
   const timestamp = new Date().toISOString();
   const dateStr = timestamp.split('T')[0];
   let exportPayload = {};
@@ -209,6 +225,8 @@ export async function exportStorageData(engine, dbConnection) {
   
   useStore.getState().addLog(`[${engine.toUpperCase()}] EXPORT SUCCESS`);
   useStore.getState().showToast(`Exported ${filename} successfully`, 'success');
+  recordExportToday();
+  return true;
 }
 
 const FK_SUFFIXES = ['_id', '_key', 'id', 'key'];

@@ -1,5 +1,7 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import useStore from '../store/useStore';
+import UpgradePrompt from './UpgradePrompt';
+import { usePlan } from '../plan/usePlan';
 import {
   generateColumns,
   normalizeIdbRecords,
@@ -211,6 +213,7 @@ export default function IdbDataMatrix() {
   const selectedKey = useStore((s) => s.selectedKey);
   const setSelectedKey = useStore((s) => s.setSelectedKey);
   const triggerRefresh = useStore((s) => s.triggerRefresh);
+  const { isPro, freeLimits } = usePlan();
 
   const [addModalOpen, setAddModalOpen] = useState(false);
   const [addSubmitting, setAddSubmitting] = useState(false);
@@ -237,6 +240,12 @@ export default function IdbDataMatrix() {
       return v !== undefined && String(v).toLowerCase().includes(lower);
     });
   });
+
+  const recordLimit = freeLimits.recordsPerStore;
+  const isRecordLimited = !isPro && filteredData.length > recordLimit;
+  const visibleData = isRecordLimited
+    ? filteredData.slice(0, recordLimit)
+    : filteredData;
 
   const handleCellSave = async (record, colName, newValue) => {
     if (!dbConnection || !currentStore) return;
@@ -325,6 +334,14 @@ export default function IdbDataMatrix() {
         onSubmit={handleAddRecord}
       />
 
+      {isRecordLimited && (
+        <UpgradePrompt
+          variant="banner"
+          feature="records"
+          message={`Showing ${recordLimit} of ${filteredData.length} records — upgrade to Pro to view all.`}
+        />
+      )}
+
       {columns.length > 0 && (
         <div className="idb-matrix-header monospace text-11" style={{ gridTemplateColumns: colTemplate }}>
           {columns.map((col) => (
@@ -335,13 +352,13 @@ export default function IdbDataMatrix() {
       )}
 
       <div className="matrix-body">
-        {filteredData.length === 0 && (
+        {visibleData.length === 0 && (
           <div className="matrix-empty monospace text-11">
             {normalizedData.length === 0 ? 'Store is empty — add a record below' : 'No records match filter'}
           </div>
         )}
 
-        {filteredData.map((record, idx) => {
+        {visibleData.map((record, idx) => {
           const pk = getRecordKey(record, storeInfo.keyPath, columns);
           const isSelected = selectedKey === pk;
           return (

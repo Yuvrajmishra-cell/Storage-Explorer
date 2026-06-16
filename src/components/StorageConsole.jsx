@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useStore from '../store/useStore';
 import IDBWrapper from '../utils/IDBWrapper';
 import { purgeAll, exportStorageData, runRelationInference } from '../utils/storage';
+import { canConnectDatabase, getFreeDatabaseName, markFreeDatabaseName } from '../utils/planLimits';
 import { deleteDatabase } from '../utils/idbAdmin';
 import IdbConnectModal from './IdbConnectModal';
 import IdbDeleteDatabaseModal from './IdbDeleteDatabaseModal';
@@ -18,6 +19,7 @@ function StorageTargetActionStrip() {
   const setIdbStoreCounts = useStore((s) => s.setIdbStoreCounts);
   const addLog = useStore((s) => s.addLog);
   const showToast = useStore((s) => s.showToast);
+  const showUpgradePrompt = useStore((s) => s.showUpgradePrompt);
 
   const lastDbName = useStore((s) => s.lastDbName);
   const setLastDbName = useStore((s) => s.setLastDbName);
@@ -105,6 +107,17 @@ function StorageTargetActionStrip() {
   };
 
   const connectIdb = async (name, ver) => {
+    if (!canConnectDatabase(name)) {
+      const freeDb = getFreeDatabaseName();
+      showUpgradePrompt(
+        'database',
+        `Free workspaces can connect to 1 IndexedDB database (${freeDb}). Upgrade to Pro to connect ${name}.`
+      );
+      showToast('Free database limit reached', 'warning');
+      closeIdbConnectModal();
+      return;
+    }
+
     setIdbConnecting(true);
     const wrapper = new IDBWrapper(name, ver);
     try {
@@ -115,6 +128,7 @@ function StorageTargetActionStrip() {
       const lastStore = useStore.getState().lastStoreName;
 
       setDbConnection(wrapper);
+      markFreeDatabaseName(name);
       setLastDbName(name);
       setLastIdbVersion(wrapper.version);
 

@@ -6,16 +6,20 @@ import StorageTelemetryHUD from './components/StorageTelemetryHUD';
 import LandingPage from './components/LandingPage';
 import DocsPage from './components/DocsPage';
 import AboutPage from './components/AboutPage';
+import PricingPage from './components/PricingPage';
 import NotFoundPage from './components/NotFoundPage';
 import SettingsPage from './components/SettingsPage';
 import AppOnboarding from './components/AppOnboarding';
 import ToastContainer from './components/ToastContainer';
 import ShortcutManager from './components/ShortcutManager';
 import KeyboardShortcutsModal from './components/KeyboardShortcutsModal';
+import { UpgradePromptHost } from './components/UpgradePrompt';
+import { PlanProvider } from './plan/PlanContext';
 import useStore from './store/useStore';
 import IDBWrapper from './utils/IDBWrapper';
 import { refreshStorageData, runRelationInference } from './utils/storage';
 import { normalizeIdbRecords } from './utils/idbRecords';
+import { canConnectDatabase, getFreeDatabaseName, markFreeDatabaseName } from './utils/planLimits';
 import './index.css';
 import './polish.css';
 
@@ -24,16 +28,15 @@ function StorageExplorerApp() {
   const currentStore = useStore((s) => s.currentStore);
   const dbConnection = useStore((s) => s.dbConnection);
   const relationCount = useStore((s) => s.relationCount);
-  const panelWidth = useStore((s) => s.panelWidth);
   const hudHeight = useStore((s) => s.hudHeight);
   const fontSize = useStore((s) => s.fontSize);
   const setDbConnection = useStore((s) => s.setDbConnection);
   const setIdbStores = useStore((s) => s.setIdbStores);
   const setIdbStoreCounts = useStore((s) => s.setIdbStoreCounts);
   const addLog = useStore((s) => s.addLog);
-  const showToast = useStore((s) => s.showToast);
   const setCurrentStore = useStore((s) => s.setCurrentStore);
   const setCurrentStoreData = useStore((s) => s.setCurrentStoreData);
+  const showUpgradePrompt = useStore((s) => s.showUpgradePrompt);
 
   const layoutStyle = {
     '--hud-height': `${hudHeight}px`,
@@ -71,10 +74,19 @@ function StorageExplorerApp() {
 
       if (settings.activeEngine !== 'indexeddb' || !settings.lastDbName) return;
 
+      if (!canConnectDatabase(settings.lastDbName)) {
+        showUpgradePrompt(
+          'database',
+          `Free workspaces can reconnect to ${getFreeDatabaseName()}, but ${settings.lastDbName} needs Pro.`
+        );
+        return;
+      }
+
       try {
         const ver = settings.lastIdbVersion || settings.defaultIdbVersion || 1;
         const wrapper = new IDBWrapper(settings.lastDbName, ver);
         await wrapper.open();
+        markFreeDatabaseName(settings.lastDbName);
 
         const storeNames = wrapper.getObjectStores();
         setDbConnection(wrapper);
@@ -102,7 +114,7 @@ function StorageExplorerApp() {
     };
 
     restoreWorkspace();
-  }, [setDbConnection, setIdbStores, setIdbStoreCounts, setCurrentStore, setCurrentStoreData, addLog, updateQuota]);
+  }, [setDbConnection, setIdbStores, setIdbStoreCounts, setCurrentStore, setCurrentStoreData, addLog, updateQuota, showUpgradePrompt]);
 
   React.useEffect(() => {
     if (!activeEngine) {
@@ -153,6 +165,7 @@ function AppRoutes() {
       <Route path="/" element={<PageTransition><LandingPage /></PageTransition>} />
       <Route path="/app" element={<PageTransition><StorageExplorerApp /></PageTransition>} />
       <Route path="/docs" element={<PageTransition><DocsPage /></PageTransition>} />
+      <Route path="/pricing" element={<PageTransition><PricingPage /></PageTransition>} />
       <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
       <Route path="/settings" element={<PageTransition><SettingsPage /></PageTransition>} />
       <Route path="*" element={<PageTransition><NotFoundPage /></PageTransition>} />
@@ -160,17 +173,24 @@ function AppRoutes() {
   );
 }
 
+function GlobalUpgradePrompt() {
+  const prompt = useStore((s) => s.upgradePrompt);
+  const closeUpgradePrompt = useStore((s) => s.closeUpgradePrompt);
+  return <UpgradePromptHost prompt={prompt} onClose={closeUpgradePrompt} />;
+}
+
 function App() {
   return (
-    <>
+    <PlanProvider>
       <ToastContainer />
       <ShortcutManager />
       <KeyboardShortcutsModal />
       <BrowserRouter>
         <AppOnboarding />
         <AppRoutes />
+        <GlobalUpgradePrompt />
       </BrowserRouter>
-    </>
+    </PlanProvider>
   );
 }
 

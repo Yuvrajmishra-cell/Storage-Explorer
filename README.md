@@ -8,6 +8,25 @@ Built as a college project at **ITM University** (2026).
 
 ---
 
+## Screenshots
+
+### Landing page
+![StorageExplorer landing page](docs/screenshots/home.png)
+
+### Explorer workspace
+![StorageExplorer app workspace](docs/screenshots/app.png)
+
+### Pricing page
+![StorageExplorer pricing page](docs/screenshots/pricing.png)
+
+### Documentation page
+![StorageExplorer documentation page](docs/screenshots/docs.png)
+
+### About page
+![StorageExplorer about page](docs/screenshots/about.png)
+
+---
+
 ## Features
 
 ### Unified storage explorer

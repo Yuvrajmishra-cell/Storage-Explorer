@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import useStore from '../store/useStore';
 import IDBWrapper from '../utils/IDBWrapper';
 import { exportStorageData, removeEntry } from '../utils/storage';
+import { canConnectDatabase, getFreeDatabaseName, markFreeDatabaseName } from '../utils/planLimits';
 
 export default function ShortcutManager() {
   const activeEngine = useStore((s) => s.activeEngine);
@@ -22,6 +23,7 @@ export default function ShortcutManager() {
   const currentStore = useStore((s) => s.currentStore);
   const addLog = useStore((s) => s.addLog);
   const showToast = useStore((s) => s.showToast);
+  const showUpgradePrompt = useStore((s) => s.showUpgradePrompt);
 
   useEffect(() => {
     const handleKeyDown = async (e) => {
@@ -76,12 +78,22 @@ export default function ShortcutManager() {
         e.preventDefault();
         const ver = 1;
         const dbName = lastDbName || 'ExplorerDB';
+        if (!canConnectDatabase(dbName)) {
+          const freeDb = getFreeDatabaseName();
+          showUpgradePrompt(
+            'database',
+            `Free workspaces can connect to 1 IndexedDB database (${freeDb}). Upgrade to Pro to connect ${dbName}.`
+          );
+          showToast('Free database limit reached', 'warning');
+          return;
+        }
         const wrapper = new IDBWrapper(dbName, ver);
         try {
           const t0 = performance.now();
           await wrapper.open();
           const ms = Math.round(performance.now() - t0);
           setDbConnection(wrapper);
+          markFreeDatabaseName(dbName);
           setActiveEngine('indexeddb');
           
           const names = wrapper.getObjectStores();
@@ -192,7 +204,8 @@ export default function ShortcutManager() {
     setHudExpanded,
     triggerRefresh,
     addLog,
-    showToast
+    showToast,
+    showUpgradePrompt
   ]);
 
   return null;

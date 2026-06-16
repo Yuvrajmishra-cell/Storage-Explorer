@@ -772,6 +772,29 @@ body.light .settings-row:hover {
   line-height: 1.5;
 }
 
+.settings-plan-pill {
+  min-width: 46px;
+  padding: 4px 8px;
+  border: 1px solid var(--settings-border);
+  border-radius: 999px;
+  color: var(--settings-muted);
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.settings-plan-pill.pro {
+  border-color: rgba(74, 222, 128, 0.32);
+  background: rgba(74, 222, 128, 0.08);
+  color: var(--settings-accent);
+}
+
+body.light .settings-plan-pill.pro {
+  border-color: rgba(22, 163, 74, 0.28);
+  background: rgba(22, 163, 74, 0.08);
+}
+
 /* Shortcuts */
 .settings-shortcuts-grid {
   display: grid;
