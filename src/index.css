@@ -22,9 +22,9 @@
 body.light {
   --bg: #f8f8f5;
   --panel: #ffffff;
-  --border: #e0e0e0;
+  --border: #e0e0dc;
   --text: #111111;
-  --muted: #888;
+  --muted: #888888;
   --accent: #16a34a;
   --accent-glow: rgba(22, 163, 74, 0.4);
   --accent-glow-subtle: rgba(22, 163, 74, 0.15);
@@ -35,6 +35,23 @@ body.light {
   --text-color: var(--text);
   --accent-color: var(--accent);
   --muted-color: var(--muted);
+
+  --bg-primary: #f8f8f5;
+  --bg-secondary: #f2f2ef;
+  --bg-card: #ffffff;
+  --border-subtle: #eeeee8;
+  --border-default: #e0e0dc;
+  --border-strong: #d0d0cc;
+  --text-primary: #111111;
+  --text-secondary: #444444;
+  --text-muted: #888888;
+  --text-placeholder: #aaaaaa;
+  --accent-green: #16a34a;
+  --accent-green-bg: rgba(22, 163, 74, 0.06);
+  --accent-green-border: #bbf7d0;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
 }
 
 * {
@@ -2187,4 +2204,115 @@ body.light .idb-matrix-row.row-selected {
 
 #overlay-root > * {
   pointer-events: auto;
+}
+
+/* ── MAIN APP LIGHT MODE OVERRIDES ── */
+body.light .app-container .storage-console {
+  background-color: var(--bg-card) !important;
+  border-bottom: 1px solid var(--border-default) !important;
+}
+
+body.light .app-container .action-strip .connect-wrapper > .btn {
+  border: 1px solid var(--border-strong) !important;
+  color: #333333 !important;
+}
+
+body.light .app-container .engine-badge.active {
+  background-color: #4ade80 !important;
+  color: #000000 !important;
+}
+
+body.light .app-container .action-strip .btn {
+  border: 1px solid var(--border-strong) !important;
+  color: var(--text-secondary) !important;
+}
+
+body.light .app-container .filter-input {
+  border-bottom: 1px solid var(--border-strong) !important;
+  color: var(--text-primary) !important;
+}
+
+body.light .app-container .filter-input::placeholder {
+  color: var(--text-placeholder) !important;
+}
+
+body.light .app-container .tab {
+  color: var(--text-muted) !important;
+}
+
+body.light .app-container .tab.active {
+  color: var(--text-primary) !important;
+  border-bottom: 2px solid var(--accent-green) !important;
+}
+
+body.light .app-container .panel-left {
+  background-color: var(--bg-primary) !important;
+  border-right: 1px solid #e8e8e4 !important;
+}
+
+body.light .app-container .panel-header h3 {
+  color: var(--text-placeholder) !important;
+}
+
+body.light .app-container .tree-item {
+  color: var(--text-secondary) !important;
+}
+
+body.light .app-container .tree-item:hover {
+  background-color: var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+}
+
+body.light .app-container .panel-right {
+  background-color: var(--bg-card) !important;
+}
+
+body.light .app-container .matrix-header,
+body.light .app-container .idb-matrix-header {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-muted) !important;
+}
+
+body.light .app-container .even-row {
+  background-color: var(--bg-card) !important;
+}
+
+body.light .app-container .odd-row {
+  background-color: #fafaf8 !important;
+}
+
+body.light .app-container .matrix-row:hover,
+body.light .app-container .idb-matrix-row:hover {
+  background-color: var(--row-hover) !important;
+  border-left-color: var(--accent-green) !important;
+}
+
+body.light .app-container .col-key {
+  color: var(--text-secondary) !important;
+  font-family: var(--font-mono) !important;
+}
+
+body.light .app-container .value-cell {
+  color: var(--text-primary) !important;
+}
+
+body.light .app-container .col-bytes {
+  color: var(--text-placeholder) !important;
+}
+
+body.light .app-container .matrix-add-form {
+  background-color: var(--bg-primary) !important;
+  border-top: 1px solid #e8e8e4 !important;
+}
+
+body.light .app-container .matrix-add-form input {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-strong) !important;
+  color: var(--text-primary) !important;
+}
+
+body.light .app-container .telemetry-hud {
+  background-color: #0a0a0a !important;
+  color: #e0e0e0 !important;
+  border-top: 1px solid #1e1e1e !important;
 }

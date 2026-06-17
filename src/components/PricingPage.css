@@ -348,3 +348,50 @@ body.light .pricing-cta.secondary.active-plan {
     margin-bottom: 18px;
   }
 }
+
+/* ── LIGHT MODE OVERRIDES ── */
+body.light .pricing-page {
+  background-color: var(--bg-primary) !important;
+}
+
+body.light .pricing-card:not(.featured) {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-default) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+}
+
+body.light .pricing-card.featured {
+  background: var(--bg-card) !important;
+  border: 2px solid #4ade80 !important;
+  box-shadow: 0 4px 20px rgba(74,222,128,0.12) !important;
+}
+
+body.light .pricing-card-badge.recommended {
+  background-color: #f0fdf4 !important;
+  border: 1px solid var(--accent-green-border) !important;
+  color: var(--accent-green) !important;
+}
+
+body.light .pricing-card-badge:not(.recommended) {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-default) !important;
+  color: var(--text-muted) !important;
+}
+
+body.light .pricing-price {
+  color: var(--text-primary) !important;
+}
+
+body.light .pricing-features li {
+  color: var(--text-secondary) !important;
+}
+
+body.light .pricing-features i {
+  color: var(--accent-green) !important;
+}
+
+body.light .pricing-cta.secondary.active-plan {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-default) !important;
+  color: #666666 !important;
+}

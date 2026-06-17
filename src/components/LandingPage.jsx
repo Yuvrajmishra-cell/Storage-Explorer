@@ -110,10 +110,12 @@ function HeroCodePanel() {
         <span className="lp-mini-dot" />
         unified storage
       </div>
-      <span className="lp-code-line"><span className="lp-code-keyword">const</span> db = <span className="lp-code-fn">connect</span>(<span className="lp-code-string">&quot;MyAppDB&quot;</span>);</span>
-      <span className="lp-code-line"><span className="lp-code-keyword">await</span> db.<span className="lp-code-fn">stores</span>();</span>
-      <span className="lp-code-line"><span className="lp-code-comment">// users, orders, products</span></span>
-      <span className="lp-code-line">db.<span className="lp-code-fn">export</span>(<span className="lp-code-string">&quot;json&quot;</span>);</span>
+      <div className="lp-hero-code-content">
+        <span className="lp-code-line"><span className="lp-code-keyword">const</span> db = <span className="lp-code-fn">connect</span>(<span className="lp-code-string">&quot;MyAppDB&quot;</span>);</span>
+        <span className="lp-code-line"><span className="lp-code-keyword">await</span> db.<span className="lp-code-fn">stores</span>();</span>
+        <span className="lp-code-line"><span className="lp-code-comment">// users, orders, products</span></span>
+        <span className="lp-code-line">db.<span className="lp-code-fn">export</span>(<span className="lp-code-string">&quot;json&quot;</span>);</span>
+      </div>
     </div>
   );
 }

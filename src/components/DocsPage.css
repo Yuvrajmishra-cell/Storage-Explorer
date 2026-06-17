@@ -1026,3 +1026,88 @@ body.light .docs-limitation-card {
     margin: 4px 0;
   }
 }
+
+/* ── LIGHT MODE OVERRIDES ── */
+body.light .docs-sidebar {
+  background-color: var(--bg-secondary) !important;
+  border-right: 1px solid var(--border-subtle) !important;
+}
+
+body.light .docs-sidebar::after {
+  background: linear-gradient(to bottom, transparent, var(--border-subtle) 20%, var(--border-subtle) 80%, transparent) !important;
+}
+
+body.light .docs-search-input {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-default) !important;
+  color: #333333 !important;
+}
+
+body.light .docs-nav-item.active {
+  color: var(--accent-green) !important;
+  border-left-color: var(--accent-green) !important;
+  background-color: var(--accent-green-bg) !important;
+}
+
+body.light .docs-step-card {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-default) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+}
+
+body.light .docs-step-card-num {
+  color: var(--accent-green) !important;
+}
+
+body.light .docs-step-card-title {
+  color: var(--text-primary) !important;
+}
+
+body.light .docs-step-card-desc {
+  color: var(--text-secondary) !important;
+}
+
+body.light .docs-sidebar-launch-btn {
+  border: 1px solid var(--accent-green) !important;
+  color: var(--accent-green) !important;
+  background: transparent !important;
+}
+
+body.light .docs-sidebar-launch-btn:hover {
+  background-color: var(--accent-green) !important;
+  color: #ffffff !important;
+  border-color: var(--accent-green) !important;
+}
+
+body.light .docs-section h2 {
+  color: var(--text-primary) !important;
+}
+
+body.light .docs-section h2::before {
+  color: var(--accent-green) !important;
+}
+
+body.light .docs-table-wrapper {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-default) !important;
+}
+
+body.light .docs-table th {
+  background-color: var(--bg-secondary) !important;
+  border-bottom: 1px solid var(--border-default) !important;
+}
+
+body.light .docs-table td {
+  border-bottom: 1px solid var(--border-default) !important;
+}
+
+body.light .docs-table code {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-default) !important;
+  color: #333333 !important;
+}
+
+body.light .docs-code-block.terminal-theme {
+  background-color: #0d0d0d !important;
+  border-color: #1e1e1e !important;
+}

@@ -879,3 +879,92 @@ body.light .about-link-btn:hover {
     height: 64px;
   }
 }
+
+/* ── LIGHT MODE OVERRIDES ── */
+body.light .about-stats-row {
+  background: #0a0a0a !important;
+  border-bottom: 1px solid #1e1e1e !important;
+}
+body.light .about-stats-row .about-stat-num {
+  color: #4ade80 !important;
+}
+body.light .about-stats-row .about-stat-label {
+  color: #888888 !important;
+}
+body.light .about-section-heading {
+  color: #aaaaaa !important;
+  border-bottom: 1px solid #e8e8e4 !important;
+}
+body.light .about-text {
+  color: #333333 !important;
+  line-height: 1.8 !important;
+}
+body.light .about-goals-card {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-default) !important;
+  border-top: 3px solid #4ade80 !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06) !important;
+}
+body.light .about-goals-list li {
+  color: #333333 !important;
+}
+body.light .about-goals-list li:hover {
+  color: #111111 !important;
+}
+body.light .about-goals-list .checkmark {
+  color: var(--accent-green) !important;
+}
+body.light .about-tech-card {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-default) !important;
+}
+body.light .about-tech-icon {
+  color: var(--accent-green) !important;
+}
+body.light .about-tech-name {
+  color: var(--text-primary) !important;
+}
+body.light .about-tech-desc {
+  color: var(--text-muted) !important;
+}
+body.light .about-tech-card:hover {
+  border-color: #4ade80 !important;
+  box-shadow: 0 4px 12px rgba(74,222,128,0.1) !important;
+}
+body.light .about-author-outer {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-default) !important;
+}
+body.light .about-author-name {
+  color: var(--text-primary) !important;
+}
+body.light .about-author-role {
+  color: var(--accent-green) !important;
+}
+body.light .about-author-college {
+  color: #666666 !important;
+}
+body.light .about-author-bio {
+  color: var(--text-secondary) !important;
+}
+body.light .about-avatar {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #4ade80 !important;
+}
+body.light .about-paper-card {
+  background: #f0fdf4 !important;
+  border: 1px solid var(--accent-green-border) !important;
+  border-left: 4px solid var(--accent-green) !important;
+}
+body.light .about-paper-title {
+  color: #333333 !important;
+}
+body.light .about-paper-action-btn {
+  border: 1px solid var(--accent-green) !important;
+  color: var(--accent-green) !important;
+  background: transparent !important;
+}
+body.light .about-paper-action-btn:hover {
+  background-color: var(--accent-green) !important;
+  color: #ffffff !important;
+  border-color: var(--accent-green) !important;
+}

@@ -2213,3 +2213,134 @@ body.light .lp-comparison-row.alt {
     gap: 20px;
   }
 }
+
+/* ── LIGHT MODE OVERRIDES ── */
+body.light .lp-hero {
+  background-color: #f5f5f0 !important;
+}
+body.light .lp-hero::before {
+  background-image: radial-gradient(circle, #d0d0c8 1px, transparent 1px) !important;
+}
+body.light .lp-headline {
+  color: #0a0a0a !important;
+}
+body.light .lp-sub {
+  color: #555555 !important;
+}
+body.light .lp-eyebrow {
+  border: 1px solid var(--accent-green) !important;
+  color: var(--accent-green) !important;
+  background-color: var(--accent-green-bg) !important;
+}
+body.light .lp-compat {
+  color: var(--text-muted) !important;
+}
+body.light .lp-hero-code-panel,
+body.light .lp-hero-schema-panel {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-default) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+body.light .lp-hero-code-content {
+  background-color: var(--bg-primary) !important;
+  border: 1px solid var(--border-default) !important;
+  padding: 12px !important;
+  border-radius: 8px !important;
+  margin-top: 8px !important;
+}
+body.light .lp-hero-code-panel .lp-code-keyword {
+  color: var(--accent-green) !important;
+}
+body.light .lp-browser-frame {
+  border: 1px solid var(--border-strong) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+body.light .lp-live-badge {
+  background-color: #f0faf0 !important;
+  border: 1px solid var(--accent-green-border) !important;
+  color: var(--accent-green) !important;
+}
+body.light .lp-live-dot {
+  background-color: var(--accent-green) !important;
+}
+body.light .lp-social-proof {
+  background-color: var(--border-subtle) !important;
+  border-top: 1px solid var(--border-default) !important;
+  border-bottom: 1px solid var(--border-default) !important;
+}
+body.light .lp-social-proof-label,
+body.light .lp-social-proof-name {
+  color: var(--text-muted) !important;
+}
+body.light .lp-social-proof-icon .ti {
+  color: var(--text-placeholder) !important;
+}
+
+/* 2. LANDING PAGE — "All your browser storage" section */
+body.light .lp-showcase {
+  background-color: #f0f0eb !important;
+}
+body.light .lp-showcase-heading {
+  color: var(--text-primary) !important;
+}
+body.light .lp-showcase-desc {
+  color: #555555 !important;
+}
+body.light .lp-showcase-cta {
+  border-color: #cccccc !important;
+  color: #444444 !important;
+}
+body.light .lp-showcase-cta:hover {
+  background-color: #e8e8e4 !important;
+  border-color: #cccccc !important;
+  color: #444444 !important;
+}
+body.light .lp-showcase-code-card {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-default) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06) !important;
+}
+body.light .lp-showcase-code-card .lp-code-keyword {
+  color: #7c3aed !important;
+}
+body.light .lp-showcase-code-card .lp-code-string {
+  color: var(--accent-green) !important;
+}
+body.light .lp-showcase-code-card .lp-code-comment {
+  color: #9ca3af !important;
+}
+body.light .lp-showcase-code-card .lp-code-fn {
+  color: #2563eb !important;
+}
+
+/* Schema diagram section */
+body.light .lp-showcase-alt {
+  background-color: #e8e8e3 !important;
+}
+body.light .lp-showcase-schema-card {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-default) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+}
+body.light .lp-schema-col-pk {
+  background-color: #fef3c7 !important;
+  color: #92400e !important;
+  border: 1px solid #fde68a !important;
+}
+body.light .lp-schema-col-fk {
+  background-color: #dbeafe !important;
+  color: #1e40af !important;
+  border: 1px solid #bfdbfe !important;
+}
+body.light .lp-schema-col {
+  color: var(--text-secondary) !important;
+  background-color: transparent !important;
+}
+body.light .lp-schema-col:hover {
+  background-color: #f5f5f2 !important;
+}
+body.light .lp-schema-relation-label {
+  background-color: #f0fdf4 !important;
+  border: 1px solid var(--accent-green-border) !important;
+  color: var(--accent-green) !important;
+}

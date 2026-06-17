@@ -275,7 +275,7 @@ button:active:not(:disabled),
 
 /* Landing page headline uses the value from LandingPage.css */
 
-.lp-browser-frame {
+body:not(.light) .lp-browser-frame {
   box-shadow:
     0 0 0 1px #1a1a1a,
     0 32px 80px rgba(0, 0, 0, 0.6),
